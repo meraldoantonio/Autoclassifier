@@ -3,7 +3,7 @@
 ## Background
 I made this project as a submission to Grab's <a href = "https://www.aiforsea.com/challenges">AI for S.E.A.</a> challenge. The project consists of the automatic classification of unlabeled car images into one of the 196 preset car classes.
 
-There are two ways to run this project: by running it as a locally-served website (recommended) or by running it on your command line. The instructions for both are provided below.
+There are two ways to run this project: by running it as a locally-served website (recommended) or by running it the provided Jupyter notebook. The instructions for both are provided below.
 
 ### Dataset
 The main dataset used in this project is the training set of <a href="https://ai.stanford.edu/~jkrause/cars/car_dataset.html">Stanford's Car Dataset.</a> It contains 8,144 images of 196 classes of cars. It also contains the coordinates of the car's bounding box, which indicates the location of the car in the image.
@@ -12,6 +12,7 @@ The main dataset used in this project is the training set of <a href="https://ai
 Prior to training, several preprocessing steps were performed.  Firstly. the dataset was split into training, validation and testing sets with a ratio of 6:3:1. Next, the non-car-containing parts of the images were removed using the bounding box coordinates provided. This cropping step was done so that the model only learns to detect and classify cars. The cropped image was then resized to 224 x 224 pixels.
 
 ### Initial Classification
+
 Transfer learning was used to create the first model, a <a href="https://arxiv.org/abs/1512.03385">ResNet-152 model.</a>  ResNet-152 model contains residual connections that enable it to train well despite its substantial depth. The code and pre-trained model weights for the Keras implementation of ResNet-152 were downloaded from the <a href = "https://gist.github.com/flyyufelix/7e2eafb149f72f4d38dd661882c554a6">GitHub page</a> of Felix Yu. After 136 epochs, a validation accuracy of around 88% was obtained.
 
 ### Object Detection Model
@@ -71,9 +72,36 @@ This step might take a while (up to 30 seconds) as the models have to be loaded 
 5. Once the server is done loading, you can open localhost, typically http://localhost:5000. Open the website in a browser (preferably Google Chrome) and view the website on a fullscreen mode.
 
 
-## Running the Models in Command Line
+## Running the Models in Jupyter Notebook
 
 In order to run the models, please perform the following steps:
+1. Clone this repository into a folder in your machine
 ```
-code test
+git clone https://github.com/meraldoantonio/Autoclassifier.git
+cd Autoclassifier
 ```
+2. Create a virtual environment and install the dependencies within the virtual environment
+```
+conda create -n autoclassifierenv python=3.6
+conda activate autoclassifierenv
+pip install -r requirements,txt
+```
+3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
+
+- Link to the <a href="https://drive.google.com/open?id=17nB4ZHpTSPkFiWd2-VINTB79Zx9z7Q_5"> original Resnet-152 weights</a>
+- Link to the <a href="https://drive.google.com/open?id=1mOpZ3PG6VyulfLlUnQJdiysMF3T7SLE4"> classification model</a>
+- Link to the <a href="https://drive.google.com/open?id=1D14F3YOBCYotojq_kGbK9aFW9PMIUUln"> object detection model</a>
+
+Put both of them in the `/models` subfolder of the `Autoclassifer` folder. If you have done these steps correctly, you will have the following subfolder/files in your repository.
+
+```
+Autoclassifier/models/  
+resnet152_weights_tf.h5
+Autoclassifier/models/  
+initial_classifer_augmented-0.97.hdf5
+Autoclassifier/models/frozen_inference_graph.pb
+```
+
+4. Create a folder called `sample_images` in the repository and place the images to be tested in this filder.
+
+5. Open the ipython notebook file `Main.ipynb` in the environment you created. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**")
