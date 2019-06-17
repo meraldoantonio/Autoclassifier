@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.ipynb_checkpoints
+To-do
+
+# Distribution / packaging
+/data
+/data2
+/logs
+/data_preprocessed
+/data_unprocessed
+/devkit
+/tgz
+/models
+/cars_test
+/cars_test_preprocessed
+/Confusion_Matrix_Heroku
+/data_cropped
+/data_download
+/data_cropped_preprocessed
+/data_cropped_preprocessed2
+/ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03

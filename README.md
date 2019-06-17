@@ -1,2 +1,2 @@
-# Autoclassifier
-A computer vision project that aims to predict the model of a car from a new car image
+# Car-classifier
+A python script and a website that enable the classification of cars based on models
