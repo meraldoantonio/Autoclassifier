@@ -80,11 +80,12 @@ In order to run the models, please perform the following steps:
 git clone https://github.com/meraldoantonio/Autoclassifier.git
 cd Autoclassifier
 ```
-2. Create a virtual environment and install the dependencies within the virtual environment
+2. Create a virtual environment and install the dependencies within the virtual environment. Afterwards, link the virtual environment to Jupyter Notebook.
 ```
 conda create -n autoclassifierenv python=3.6
 conda activate autoclassifierenv
 pip install -r requirements.txt
+python -m ipykernel install --user --name autoclassifierenv
 ```
 3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
 
@@ -104,4 +105,9 @@ Autoclassifier/models/frozen_inference_graph.pb
 
 4. Create a folder called `sample_images` in the repository and place the images to be tested in this filder.
 
-5. Open the ipython notebook file `Main.ipynb` in the environment you created. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**")
+5. Exit the virtual environment and open Jupyter Notebook. Open the ipython notebook file `Main.ipynb` . Once the file is opened, change the kernel to `autoclassifierenv`. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**"). Your predictions will be outputted in the last cell in the form of a list of nested dictionary that you can manipulate.
+
+```
+conda activate
+jupyter notebook
+```
