@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Autoclassifier</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <!--Favicon-->
+    <link rel="shortcut icon" hhref={{ url_for('static', filename='images/favicon.ico') }} title="Favicon" />
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/namari-color.css') }}>
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/font-awesome.min.css') }}>
+
+    <!-- Animate CSS-->
+    <link href={{ url_for('static', filename='css/animate.css') }} rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status" class="la-ball-triangle-path">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!--End of Preloader-->
+
+    <div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+        <div class="top-border wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"></div>
+        <div class="right-border wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+        <div class="bottom-border wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;"></div>
+        <div class="left-border wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"></div>
+    </div>
+
+    <div id="wrapper">
+
+        <header id="banner" class="scrollto clearfix" data-enllax-ratio=".5">
+            <div id="header" class="nav-collapse">
+                <div class="row clearfix">
+                    <div class="col-1">
+
+                        <!--Logo-->
+                        <div id="logo">
+
+
+
+                        </div>
+                        <!--End of Logo-->
+
+                        <aside>
+
+                            <!--Social Icons in Header-->
+                            <ul class="social-icons">
+                                <li>
+                                    <a target="_blank" title="LinkedIn" href="https://www.linkedin.com/in/meraldo/?originalSubdomain=sg">
+                                        <i class="fa fa-linkedin fa-1x"></i><span>LinkedIn</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="GitHub" href="https://github.com/meraldoantonio">
+                                        <i class="fa fa-github fa-1x"></i><span>GitHub</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="_blank" title="Personal website" href="https://meraldoantonio.github.io/">
+                                        <i class="fa fa-address-book-o fa-1x"></i><span>Personal website</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--End of Social Icons in Header-->
+
+                        </aside>
+
+                        <!--Main Navigation-->
+                        <nav id="nav-main">
+                            <ul>
+                                <li>
+                                    <a href="#banner">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#challenge">Challenge</a>
+                                </li>
+                                <li>
+                                    <a href="#exploration">Exploration</a>
+                                </li>
+                                <li>
+                                    <a href="#solution">Solution</a>
+                                </li>
+                                <li>
+                                    <a href="#about">About</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                        <!--End of Main Navigation-->
+
+                        <div id="nav-trigger"><span></span></div>
+                        <nav id="nav-mobile"></nav>
+
+                    </div>
+                </div>
+            </div>
+            <!--End of Header-->
+
+            <!--Banner Content-->
+            <div id="home-content" class="row clearfix">
+
+                <div class="col-38">
+
+                    <div class="section-heading">
+                        <h1>AUTO<b>CLASSIFIER</b>
+                            <h2>This is machine learning project by Meraldo Antonio. For best viewing experience, please use Google Chrome as your browser and please view this page in full screen.</h2>
+                    </div>
+
+                    <!--Call to Action-->
+                    <a href="#exploration" class="button">Explore</a>
+                    <!--End Call to Action-->
+
+                </div>
+
+            </div>
+            <!--End of Row-->
+        </header>
+
+        <!--Main Content Area-->
+        <main id="content">
+
+            <!--Introduction-->
+            <section id="challenge" class="introduction scrollto">
+
+                <div class="row clearfix">
+
+                    <div class="col-3">
+                        <div class="section-heading">
+                            <h3>Challenge</h3>
+                            <h2 class="section-title">Computer vision</h2>
+                            <p class="section-subtitle">How might we automate the process of recognising the details of the vehicles from the images, including the make and model?</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-2-3">
+
+                        <!--Icon Block-->
+
+                        <div>
+                            <p>
+                                I made this project as a submission to Grab's <a href = "https://www.aiforsea.com/challenges">AI for S.E.A.</a> challenge.
+                            </p>
+                            <p>
+                                The project consists of the automatic classification of unlabelled car images into one of the 196 preset car classes. Such an automatic classification process can help Grab's passengers find their rides quicker and increase earning opportunities of Grab's driver-partners.
+                            </p>
+                        </div>
+
+                        <!--End of Icon Block-->
+
+                    </div>
+
+                </div>
+
+
+            </section>
+            <!--End of Introduction-->
+
+
+            <!--Gallery-->
+            <aside id="gallery" class="row text-center scrollto clearfix" data-featherlight-gallery data-featherlight-filter="a">
+
+
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-1.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.1s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-1.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-2.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.3s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-2.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-3.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.5s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-3.jpg') }} alt="Landing Page" /></a>
+
+
+            </aside>
+            <!--End of Gallery-->
+
+
+            <!--Content Section-->
+            <section id="exploration" class="introduction scrollto">
+                <div id="services" class="scrollto clearfix">
+
+                    <div class="row no-padding-bottom clearfix">
+
+
+                        <!--Content of the Right Side-->
+                        <div class="col-1">
+                            <div class="section-heading">
+                                <h3>EXPLORATION</h3>
+                                <h2 class="section-title">Data Exploration and Model Training</h2>
+                            </div>
+                            <h4><b><u>Dataset</b></u></h4>
+                                <p>
+                                    The main dataset used in this project is the training set of <a href="https://ai.stanford.edu/~jkrause/cars/car_dataset.html">Stanford's Car Dataset.</a> This dataset contains 8,144 images of 196 classes of cars. It also contains the coordinates of the car's bounding box - a box which indicates the location of the car in the image.
+                                </p>
+
+                            <h4><b><u>Preprocessing</b></u></h4>
+                                <p>
+                                    The training of the initial model was done using this dataset. Prior to training, several preprocessing steps were performed.  Firstly. the dataset was split into training, validation and testingsets with a ratio of 6:3:1. Next, the non-car-containing parts of the images were removed (cropped out) by making use of the bounding box coordinates provided. This cropping step was done so that the model only learns to detect and classify cars and not be confused with the presence of background or other objects in the image.
+                                </p>
+
+                                <p>
+                                    The cropped image was then resized to 224 x 224 pixels, as this is the dimension that is expected by the model. Finally, the size of the dataset was artificially expanded by introducing random shifts, rotations, shears and horizontal flipping to the images using Keras' ImageDataGenerator class.
+                                </p>
+
+
+                            <h4><b><u>Initial Classification Model</b></u></h4>
+                                <p>
+                                    Transfer learning was used to create the first model, a <a href="https://arxiv.org/abs/1512.03385">ResNet-152 model.</a> ResNet-152 was chosen because it is a proven architecture that has performed well in several image classification competitions. ResNet-152 model contains residual connections that enable it to train well despite its substantial depth.
+                                </p>
+                                <p>
+                                    The code and pre-trained model weights for the Keras implementation of ResNet-152 were downloaded from the <a href = "https://gist.github.com/flyyufelix/7e2eafb149f72f4d38dd661882c554a6">GitHub page</a> of Felix Yu. Below is the training graph. As we can see, after 136 epochs, a validation accuracy of around 88% was obtained.
+                                </p>
+
+
+                                <div>
+                                    <iframe src={{ url_for('static', filename='html/log1.html') }} id="log1" style="height:500px;width:1300px;float:left;display:inline-block">
+                                    </iframe>
+                                </div>
+
+
+                            <h4><b><u>Car Localization Model</b></u></h4>
+                                <p>
+                                    One of the reasons that enabled the initial model to achieve a decent performance was the fact that it was trained and tested using cropped images that only contain cars. However, unseen car images to which the model will be applied do not come with bounding box coordinates. In fact, these images might contain confounding objects that would confuse the model.
+                                </p>
+
+                                <p>
+                                    To improve the overall prediction, an object detection model will be deployed in conjunction with the classification model. The object detection model will be introduced to the system. This model allows the pinpointing of a car's location in an image and the subsequent cropping of its non-car-containing parts. In this project, a pre-trained model from <a href="https://github.com/tensorflow/models">Tensorflow's Object Detection API</a> was used.
+                                </p>
+                                <p>
+                                    The original Tensorflow Object Detection model will return the locations of <u>all</u> cars contained in an image. I adjusted the model so that even when an incoming image contains multiple cars, the model will only localize <u>one</u> car - the most prominently displayed one. If no car was detected, the model will return None.
+                                </p>
+
+
+                            <h4><b><u>Data Augmentation</b></u></h4>
+                                <p>
+                                    Another strategy I employed to increase the model's accuracy is to augment the data. I used Python's Google Image Downloader to automatically download an additional 100 images of each car class.
+                                </p>
+                                <p>
+                                    This image downloading step is not perfect. Some of the searches yielded non-car images, and some of the car images downloaded are of a "wrong" class.
+                                    I then made use of the previously described classification model and the object detection model to weed out these falsely labeled images. First, the object dection model was employed to ensure that downloaded images indeed contain a car; images that don't contain any car were discarded. Afterwards, I used the bounding box coordinates outputted by the object localization model to crop out the non-car-containing portions of the images. Lastly, the  classification model was deployed to the cropped images; I only took in images whose predictions match the search keywords I used to get the images. After this filtering step, around 70 new images were obtained for each class.
+                                </p>
+
+                            <h4><b><u>Model Retraining</b></u></h4>
+                                <p>
+                                    These new images from Google were combined together with the training set from the original Stanford Dataset. The same validation and testing set were used. The classification model was then retrained from scratch. After 392 epochs, an accuracy of around 94% was obtained. The training graph from this training step is shown below.
+                                </p>
+
+                                <div>
+                                    <iframe src={{ url_for('static', filename='html/log2.html') }} id="log2" style="height:500px;width:1300px;float:left;display:inline-block">
+                                    </iframe>
+                                </div>
+
+                                <p>
+
+                                    The normalized matrix of this second classification model is provided below. Black squares show disagreement between the predicted and real labels; while white squares show correct predictions. The white diagonal line across the matrix indicates that this model almost always correctly predicts any car class.
+                                </p>
+
+                            <iframe src="https://autoclassifier-cm.herokuapp.com/" id="iframe_cm" style="height:800px;width:2000px;float:left;display:block"></iframe>
+
+
+                            <!-- Just replace the Video ID "UYJ5IjBRlW8" with the ID of your video on YouTube (Found within the URL) -->
+                            <!--<a href="#" data-videoid="UYJ5IjBRlW8" data-videosite="youtube" class="button video link-lightbox">
+                                WATCH VIDEO <i class="fa fa-play" aria-hidden="true"></i>
+                            </a> -->
+                        </div>
+                        <!--End Content Right Side-->
+                    </div>
+                </div>
+            </section>
+            <!--End of Content Section-->
+
+
+            <!--Another Divider Gallery-->
+            <aside id="gallery" class="row text-center scrollto clearfix" data-featherlight-gallery data-featherlight-filter="a">
+
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-4.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.1s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-4.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-5.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.3s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-5.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-6.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.5s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-6.jpg') }} alt="Landing Page" /></a>
+
+
+            </aside>
+            <!--End of Another Divider Gallery-->
+
+
+            <!--Content Section Where we put the Dash model-->
+            <section id="solution" class="introduction scrollto">
+                <div id="services" class="scrollto clearfix">
+
+                    <div class="row no-padding-bottom clearfix">
+
+
+                        <!--Content of the Right Side-->
+                        <div class="col-1">
+                            <div class="section-heading">
+                                <h3>SOLUTION</h3>
+                                <h2 class="section-title">The Model in Action</h2>
+                                <p class="section-subtitle"></p>
+                            </div>
+                            <p>To try out the model, please upload a jpeg car image in the filed below.
+                            </p>
+                            </br>
+                        </div>
+                        <!--End Content Right Side-->
+                        <div>
+                            <iframe src="http://127.0.0.1:5000/dash" id="iframe_model" style="height:1800px;width:1300px;float:left;display:block"></iframe>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--End of Content Section-->
+
+
+            <!--Yet Another Divider Gallery-->
+            <aside id="gallery" class="row text-center scrollto clearfix" data-featherlight-gallery data-featherlight-filter="a">
+
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-1.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.1s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-1.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-2.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.3s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-2.jpg') }} alt="Landing Page" /></a>
+                <a href={{ url_for('static', filename='images/gallery-images/gallery-image-3.jpg') }} data-featherlight="image" class="col-3 wow fadeIn" data-wow-delay="0.5s"><img src={{ url_for('static', filename='images/gallery-images/gallery-image-3.jpg') }} alt="Landing Page" /></a>
+
+            </aside>
+            <!--End of Another Divider Gallery-->
+
+
+            <!--Introduction/About section-->
+            <section id="about" class="introduction scrollto">
+
+                <div class="row clearfix">
+
+                    <div class="col-3">
+                        <div class="section-heading">
+                            <h3>ABOUT</h3>
+                            <h2 class="section-title">About Meraldo</h2>
+                            <p class="section-subtitle">I am a budding data scientist based in Singapore. I am currently working at <a href="https://www.aisingapore.org/">AI Singapore</a> and concurrently pursuing a master's degree in analytics from <a href="https://www.gatech.edu/academics/degrees/masters/analytics-online-degree-oms-analytics">Georgia Tech</a>. Using the links on the right, you can find out more about me and (hopefully) contact me.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-2-3">
+
+
+                        <!--Icon Block-->
+                        <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.1s">
+                            <!--Icon-->
+                            <div class="icon">
+                                <a target="_blank" title="GitHub" href="https://github.com/meraldoantonio">
+                                    <i class="fa fa-github fa-2x"></i>
+                                </a>
+                            </div>
+                            <!--Icon Block Description-->
+                            <div class="icon-block-description">
+                                <h4>GitHub</h4>
+                                <p>Click here to see other projects I have done</p>
+                            </div>
+                        </div>
+                        <!--End of Icon Block-->
+
+                        <!--Icon Block-->
+                        <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.3s">
+                            <!--Icon-->
+                            <div class="icon">
+                                <a target="_blank" title="Personal website" href="https://meraldoantonio.github.io">
+                                    <i class="fa fa-address-book-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <!--Icon Block Description-->
+                            <div class="icon-block-description">
+                                <h4>Personal Website</h4>
+                                <p>Click here to know more about me</p>
+                            </div>
+                        </div>
+                        <!--End of Icon Block-->
+
+                        <!--Icon Block-->
+                        <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.5s">
+                            <!--Icon-->
+                            <div class="icon">
+                                <a target="_blank" title="Resume" href="https://meraldoantonio.github.io/pdf/Resume2.pdf">
+                                    <i class="fa fa-file-text-o fa-2x"></i>
+                                </a>
+                            </div>
+                            <!--Icon Block Description-->
+                            <div class="icon-block-description">
+                                <h4>Résumé</h4>
+                                <p>Click here to download my résumé</p>
+                            </div>
+                        </div>
+                        <!--End of Icon Block-->
+
+                        <!--Icon Block-->
+                        <div class="col-2 icon-block icon-top wow fadeInUp" data-wow-delay="0.7s">
+                            <!--Icon-->
+                            <div class="icon">
+                                <a target="_blank" title="LinkedIn" href="https://www.linkedin.com/in/meraldo/?originalSubdomain=sg">
+                                    <i class="fa fa-linkedin fa-2x"></i>
+                                </a>
+                            </div>
+                            <!--Icon Block Description-->
+                            <div class="icon-block-description">
+                                <h4>LinkedIn</h4>
+                                <p>Click here to know more about my professional and educational background</p>
+                            </div>
+                        </div>
+                        <!--End of Icon Block-->
+
+                    </div>
+
+                </div>
+            </section>
+            <!--End of Introduction-->
+
+
+        </main>
+        <!--End Main Content Area-->
+
+
+        <!--Footer-->
+        <footer id="landing-footer" class="clearfix">
+            <div class="row clearfix">
+                <p id="copyright" class="col-2">This front end website is a modification of a free template downloaded from <a href="https://www.shapingrain.com">ShapingRain</a></p>
+
+            </div>
+        </footer>
+        <!--End of Footer-->
+
+    </div>
+
+    <!-- Include JavaScript resources -->
+    <script src={{ url_for('static', filename='js/jquery.1.8.3.min.js') }}></script>
+    <script src={{ url_for('static', filename='js//wow.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/featherlight.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/featherlight.gallery.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.enllax.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.scrollUp.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.easing.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.stickyNavbar.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.waypoints.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/images-loaded.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/lightbox.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/site.js') }}></script>
+
+
+</body>
+
+</html>
