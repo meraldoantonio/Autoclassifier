@@ -47,14 +47,17 @@ conda create -n autoclassifierenv python=3.6
 conda activate autoclassifierenv
 pip install -r requirements,txt
 ```
-3. Download the pretrained models to your local project repository.  **Do not change their filenames**!
+3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
 
+- Link to the <a href="https://drive.google.com/open?id=17nB4ZHpTSPkFiWd2-VINTB79Zx9z7Q_5"> original Resnet-152 weights</a>
 - Link to the <a href="https://drive.google.com/open?id=1mOpZ3PG6VyulfLlUnQJdiysMF3T7SLE4"> classification model</a>
 - Link to the <a href="https://drive.google.com/open?id=1D14F3YOBCYotojq_kGbK9aFW9PMIUUln"> object detection model</a>
 
 Put both of them in the `/models` subfolder of the `Autoclassifer` folder. If you have done these steps correctly, you will have the following subfolder/files in your repository.
 
 ```
+Autoclassifier/models/  
+resnet152_weights_tf.h5
 Autoclassifier/models/  
 initial_classifer_augmented-0.97.hdf5
 Autoclassifier/models/frozen_inference_graph.pb
