@@ -237,13 +237,13 @@
                                 </div>
 
 
-                            <h4><b><u>Car Localization Model</b></u></h4>
+                            <h4><b><u>Object Detection Model</b></u></h4>
                                 <p>
                                     One of the reasons that enabled the initial model to achieve a decent performance was the fact that it was trained and tested using cropped images that only contain cars. However, unseen car images to which the model will be applied do not come with bounding box coordinates. In fact, these images might contain confounding objects that would confuse the model.
                                 </p>
 
                                 <p>
-                                    To improve the overall prediction, an object detection model will be deployed in conjunction with the classification model. The object detection model will be introduced to the system. This model allows the pinpointing of a car's location in an image and the subsequent cropping of its non-car-containing parts. In this project, a pre-trained model from <a href="https://github.com/tensorflow/models">Tensorflow's Object Detection API</a> was used.
+                                    To improve the overall prediction, an object detection model will be deployed in conjunction with the classification model. This model allows the pinpointing of a car's location in an image and the subsequent cropping of its non-car-containing parts. In this project, a pre-trained model from <a href="https://github.com/tensorflow/models">Tensorflow's Object Detection API</a> was used.
                                 </p>
                                 <p>
                                     The original Tensorflow Object Detection model will return the locations of <u>all</u> cars contained in an image. I adjusted the model so that even when an incoming image contains multiple cars, the model will only localize <u>one</u> car - the most prominently displayed one. If no car was detected, the model will return None.
@@ -256,7 +256,7 @@
                                 </p>
                                 <p>
                                     This image downloading step is not perfect. Some of the searches yielded non-car images, and some of the car images downloaded are of a "wrong" class.
-                                    I then made use of the previously described classification model and the object detection model to weed out these falsely labeled images. First, the object dection model was employed to ensure that downloaded images indeed contain a car; images that don't contain any car were discarded. Afterwards, I used the bounding box coordinates outputted by the object localization model to crop out the non-car-containing portions of the images. Lastly, the  classification model was deployed to the cropped images; I only took in images whose predictions match the search keywords I used to get the images. After this filtering step, around 70 new images were obtained for each class.
+                                    I then made use of the previously described classification model and the object detection model to weed out these falsely labeled images. First, the object detection model was employed to ensure that downloaded images indeed contain a car; images that don't contain any car were discarded. Afterwards, I used the bounding box coordinates outputted by the object localization model to crop out the non-car-containing portions of the images. Lastly, the  classification model was deployed to the cropped images; I only took in images whose predictions match the search keywords I used to get the images. After this filtering step, around 70 new images were obtained for each class.
                                 </p>
 
                             <h4><b><u>Model Retraining</b></u></h4>

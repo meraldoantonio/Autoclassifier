@@ -12,7 +12,6 @@ The main dataset used in this project is the training set of <a href="https://ai
 Prior to training, several preprocessing steps were performed.  Firstly. the dataset was split into training, validation and testing sets with a ratio of 6:3:1. Next, the non-car-containing parts of the images were removed using the bounding box coordinates provided. This cropping step was done so that the model only learns to detect and classify cars. The cropped image was then resized to 224 x 224 pixels.
 
 ### Initial Classification
-
 Transfer learning was used to create the first model, a <a href="https://arxiv.org/abs/1512.03385">ResNet-152 model.</a>  ResNet-152 model contains residual connections that enable it to train well despite its substantial depth. The code and pre-trained model weights for the Keras implementation of ResNet-152 were downloaded from the <a href = "https://gist.github.com/flyyufelix/7e2eafb149f72f4d38dd661882c554a6">GitHub page</a> of Felix Yu. After 136 epochs, a validation accuracy of around 88% was obtained.
 
 ### Object Detection Model

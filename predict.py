@@ -58,7 +58,7 @@ def rank_predictions(probabilities, classnames, top=5):
                                    "probability" : top_probabilities[i]}
     return ranked_predictions
 
-def predict_images_in_a_directory(directory, classnames, model, prediction_output = "classname", verbose = True):
+def predict_images_in_a_directory(directory, classnames, model, verbose = True):
     """
     Function:
         - Predict images in a directory
@@ -82,7 +82,7 @@ def predict_images_in_a_directory(directory, classnames, model, prediction_outpu
     predicted_labels = []
 
 
-    for i, path in tqdm(enumerate(paths)):
+    for i, path in enumerate(paths):
 
         # Preprocess the image
         img = cv.imread(path)
@@ -93,18 +93,13 @@ def predict_images_in_a_directory(directory, classnames, model, prediction_outpu
         # Get the probabilities of all class
         probabilities = model.predict(img)
         # Get the top probability
-        top = 1
-        predicted_classname = rank_predictions(probabilities, classnames, top)[top]["classname"]
-        predicted_classnumber = rank_predictions(probabilities, classnames, top)[top]["classnumber"]
-
-        if prediction_output == "classname":
-            predicted_labels.append(predicted_classname)
-        else:
-            predicted_labels.append(predicted_classnumber)
+        top = 3
+        prediction = rank_predictions(probabilities, classnames, top)
+        predicted_labels.append(prediction)
 
         if verbose:
             print(f"Predicting sample {i + 1} out of {number_samples}")
-            print(f"Prediction:{predicted_classname}")
+            print(f"Prediction:{prediction}")
             print()
             print("=======================================")
 
@@ -113,7 +108,7 @@ def predict_images_in_a_directory(directory, classnames, model, prediction_outpu
 def predict_images_in_a_nested_directory(sorted_directory, classnames, model, prediction_output = "classname", verbose = True):
     """
     Function:
-        - Predict images in a nested folder where images are placed in subfolders whose names are the classnames of the images of
+        - Predict images in a nested folder where images are placed in subfolders whose names are the classnames of the images
     Arguments:
         - sorted_directory (str): relative path to the sorted_directory containing the images
         - classnames (np.array) : 196-dimension array of classnames
@@ -174,6 +169,62 @@ def predict_images_in_a_nested_directory(sorted_directory, classnames, model, pr
             print("=======================================")
 
     return predicted_labels, real_labels
+
+def filter_images_in_a_nested_directory(sorted_directory, classnames, model, verbose = True):
+    """
+    Function:
+        - Predict images in a nested folder where images are placed in subfolders whose names are the classnames of the images
+        - If the prediction does not equal the subfolder name, the image will be deleted.
+    Arguments:
+        - sorted_directory (str): relative path to the sorted_directory containing the images
+        - classnames (np.array) : 196-dimension array of classnames
+        - model: the keras model to be used fo prediction
+        - verbose (bool): if True, prints the predicted class and the real class as the prediction is running
+    Returns:
+        - predicted_labels (list): a list of predictions
+        - real_labels (list): a list of real labels
+    """
+    # Get the complete paths to the images
+    paths = []
+    for root, directories, files in os.walk(sorted_directory, topdown=False):
+        for file in files:
+            paths.append(os.path.join(root, file))
+
+    number_samples = len(paths)
+    predicted_labels = []
+    real_labels = []
+
+
+    for i, path in tqdm(enumerate(paths)):
+        # Preprocess the image
+        img = cv.imread(path)
+        img = cv.resize(img, (224, 224), cv.INTER_CUBIC)
+        img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+        img = np.expand_dims(img, 0)
+
+        # Get the probabilities of all class
+        probabilities = model.predict(img)
+        # Get the top probability
+        top = 1
+        predicted_classname = rank_predictions(probabilities, classnames, top)[top]["classname"]
+
+        # Get the real classname from folder structure
+        real_classname = path.split(os.path.sep)[-2]
+        # The presence of / confuses the slitting process
+        if real_classname == "V Cargo Van Minivan 2012":
+            real_classname = "Ram C/V Cargo Van Minivan 2012"
+
+        # If the real label doesn't equal predicted label, remove the file
+        if real_classname != predicted_classname:
+            os.remove(path)
+
+        if verbose:
+            print(f"Predicting sample {i + 1} out of {number_samples}")
+            print(f"Prediction:{predicted_classname}")
+            print(f"Real class:{real_classname}")
+            print()
+            print("=======================================")
+
 
 def calculate_accuracy(y_pred, y_real):
     """
@@ -582,9 +633,10 @@ def detect_crop_and_resize_images_using_model(graph, source_directory="./cars_te
             cropped_image = crop_image_with_bounding_box(original_image_rgb, best_bounding_box_coordinates)
             resized_image = cv.resize(cropped_image, (224, 224))
             resized_image_bgr = cv.cvtColor(resized_image, cv.COLOR_RGB2BGR)
-
             cv.imwrite(os.path.join(target_directory, filename), resized_image_bgr)
+            print("got car!")
         except:
             resized_image_bgr = cv.resize(original_image_bgr, (224, 224))
             cv.imwrite(os.path.join(target_directory, filename), resized_image_bgr)
+            print("no car!")
     print(f"{length_image_list:,} images have been preprocessed and placed in `{target_directory}`")
