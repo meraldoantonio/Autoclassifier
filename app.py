@@ -44,7 +44,9 @@ model = load_pretrained_model(model_weights_path = 'models/initial_classifer_aug
 model._make_predict_function()
 
 # Object detection model
-PATH_TO_FROZEN_GRAPH = "ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03/frozen_inference_graph.pb"
+PATH_TO_FROZEN_GRAPH = "models/frozen_inference_graph.pb"
+
+#PATH_TO_FROZEN_GRAPH = "ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03/frozen_inference_graph.pb"
 detection_graph = build_localization_model(PATH_TO_FROZEN_GRAPH)
 
 ########################### Load variables ##########################################
@@ -245,6 +247,8 @@ classnames = np.array(['AM General Hummer SUV 2000',
  'Volvo 240 Sedan 1993',
  'Volvo XC90 SUV 2007',
  'smart fortwo Convertible 2012'])
+
+
 ##################################################################################################
 
 
