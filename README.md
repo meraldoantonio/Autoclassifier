@@ -45,7 +45,7 @@ cd Autoclassifier
 ```
 conda create -n autoclassifierenv python=3.6
 conda activate autoclassifierenv
-pip install -r requirements,txt
+pip install -r requirements.txt
 ```
 3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
 
