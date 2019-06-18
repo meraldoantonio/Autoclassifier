@@ -63,13 +63,28 @@ initial_classifer_augmented-0.97.hdf5
 Autoclassifier/models/frozen_inference_graph.pb
 ```
 
-4. Run Flask by running the following command inside the repository
+4. The Tensorflow Object Detection API uses Protobufs to configure model and training parameters. Before the framework can be used, the Protobuf libraries must be compiled.
+
+```
+wget -O protobuf.zip https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip
+unzip protobuf.zip
+
+```
+
+Next, run the compilation process.
+
+```
+./bin/protoc object_detection/protos/*.proto --python_out=.
+
+```
+
+5. Run Flask by running the following command inside the repository
 ```
 flask run
 ```
 This step might take a while (up to 30 seconds) as the models have to be loaded onto the backend server.
 
-5. Once the server is done loading, you can open localhost, typically http://localhost:5000. Open the website in a browser (preferably Google Chrome) and view the website on a fullscreen mode.
+6. Once the server is done loading, you can open localhost, typically http://localhost:5000. Open the website in a browser (preferably Google Chrome) and view the website on a fullscreen mode.
 
 
 ## Running the Models in Jupyter Notebook
@@ -103,9 +118,25 @@ initial_classifer_augmented-0.97.hdf5
 Autoclassifier/models/frozen_inference_graph.pb
 ```
 
-4. Create a folder called `sample_images` in the repository and place the images to be tested in this filder.
 
-5. Exit the virtual environment and open Jupyter Notebook. Open the ipython notebook file `Main.ipynb` . Once the file is opened, change the kernel to `autoclassifierenv`. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**"). Your predictions will be outputted in the last cell in the form of a list of nested dictionary that you can manipulate.
+4. The Tensorflow Object Detection API uses Protobufs to configure model and training parameters. Before the framework can be used, the Protobuf libraries must be compiled.
+
+```
+wget -O protobuf.zip https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip
+unzip protobuf.zip
+
+```
+
+Next, run the compilation process.
+
+```
+./bin/protoc object_detection/protos/*.proto --python_out=.
+
+```
+
+5. Create a folder called `sample_images` in the repository and place the images to be tested in this filder.
+
+6. Exit the virtual environment and open Jupyter Notebook. Open the ipython notebook file `Main.ipynb` . Once the file is opened, change the kernel to `autoclassifierenv`. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**"). Your predictions will be outputted in the last cell in the form of a list of nested dictionary that you can manipulate.
 
 ```
 conda activate
