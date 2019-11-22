@@ -54,6 +54,7 @@ MODEL_OBJ_PATH = os.path.join(MODEL_DIR, MODEL_OBJ_NAME)
 
 if os.path.exists(MODEL_CLF_PATH) and os.path.exists(MODEL_CLF_WEIGHT_PATH) and os.path.exists(MODEL_OBJ_PATH):
     MODEL_AVAILABLE = True
+    print("All the models are already available.")
 else:
     print(f"Not all required models are available!")
     if not os.path.exists(MODEL_DIR):
