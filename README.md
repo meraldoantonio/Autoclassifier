@@ -34,6 +34,8 @@ These new images from Google were combined together with the training set from t
 
 I served the models in a website created using Flask and Dash.
 
+![image](https://drive.google.com/uc?export=view&id=1MmAgeqCKAjIR2wxG4TavyMgXerfLElvS)
+
 To run the website locally, please perform the following steps. Note: If possible, please run this step in Linux systems (Ubuntu/Pop OS); I have yet to test this in other operating systems.
 
 1. Clone this repository into a folder in your machine
@@ -47,71 +49,12 @@ conda create -n autoclassifierenv python=3.6
 conda activate autoclassifierenv
 pip install -r requirements.txt
 ```
-3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
 
-- Link to the <a href="https://drive.google.com/open?id=17nB4ZHpTSPkFiWd2-VINTB79Zx9z7Q_5"> original Resnet-152 weights</a>
-- Link to the <a href="https://drive.google.com/open?id=1mOpZ3PG6VyulfLlUnQJdiysMF3T7SLE4"> classification model</a>
-- Link to the <a href="https://drive.google.com/open?id=1D14F3YOBCYotojq_kGbK9aFW9PMIUUln"> object detection model</a>
-
-Put both of them in the `/models` subfolder of the `Autoclassifer` folder. If you have done these steps correctly, you will have the following subfolder/files in your repository.
-
-```
-Autoclassifier/models/  
-resnet152_weights_tf.h5
-Autoclassifier/models/  
-initial_classifer_augmented-0.97.hdf5
-Autoclassifier/models/frozen_inference_graph.pb
-```
-
-4. Run Flask by running the following command inside the repository
+3. Run Flask by running the following command inside the repository
 ```
 flask run
 ```
-This step might take a while (up to 60 seconds) as the models have to be loaded onto the backend server.
+This step might take a while (up to 120 seconds) as the models have to be downloaded and loaded onto the backend server.
 
-5. Once the server is done loading, you can open localhost, typically http://localhost:5000. Open the website in a browser (preferably Google Chrome) and view the website on a fullscreen mode.
+4. Once the server is done loading, you can open localhost, typically http://localhost:5000. Open the website in a browser (preferably Google Chrome) and view the website on a fullscreen mode.
 
-
-## Running the Models in Jupyter Notebook
-
-In order to run the models, please perform the following steps.
-
-Note: If possible, please run this step in Linux systems (Ubuntu/Pop OS); I have yet to test this in other operating systems.
-
-1. Clone this repository into a folder in your machine
-```
-git clone https://github.com/meraldoantonio/Autoclassifier.git
-cd Autoclassifier
-```
-2. Create a virtual environment and install the dependencies within the virtual environment. Afterwards, link the virtual environment to Jupyter Notebook.
-```
-conda create -n autoclassifierenv python=3.6
-conda activate autoclassifierenv
-pip install -r requirements.txt
-python -m ipykernel install --user --name autoclassifierenv
-```
-3. Download following three pretrained models to your local project repository.  **Do not change their filenames**!
-
-- Link to the <a href="https://drive.google.com/open?id=17nB4ZHpTSPkFiWd2-VINTB79Zx9z7Q_5"> original Resnet-152 weights</a>
-- Link to the <a href="https://drive.google.com/open?id=1mOpZ3PG6VyulfLlUnQJdiysMF3T7SLE4"> classification model</a>
-- Link to the <a href="https://drive.google.com/open?id=1D14F3YOBCYotojq_kGbK9aFW9PMIUUln"> object detection model</a>
-
-Put both of them in the `/models` subfolder of the `Autoclassifer` folder. If you have done these steps correctly, you will have the following subfolder/files in your repository.
-
-```
-Autoclassifier/models/  
-resnet152_weights_tf.h5
-Autoclassifier/models/  
-initial_classifer_augmented-0.97.hdf5
-Autoclassifier/models/frozen_inference_graph.pb
-```
-
-
-4. Create a folder called `sample_images` in the repository and place the images to be tested in this filder.
-
-5. Exit the virtual environment and open Jupyter Notebook. Open the ipython notebook file `Main.ipynb` . Once the file is opened, change the kernel to `autoclassifierenv`. Run the cells in part 1 ("**Imports**") and part 4 ("**Imports**"). Your predictions will be outputted in the last cell in the form of a list of nested dictionary that you can manipulate.
-
-```
-conda activate
-jupyter notebook
-```
