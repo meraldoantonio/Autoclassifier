@@ -11,6 +11,7 @@ import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
 import io
+import gdown
 
 from predict import *
 from utils import *
@@ -37,18 +38,54 @@ app = dash.Dash(
 server = app.server
 app.config['suppress_callback_exceptions']=True
 
+
+print("\n...Checking if you have downloaded the model, please wait...\n")
+CWD = os.getcwd()
+
+MODEL_DIR_NAME = "models"
+MODEL_CLF_NAME = "initial_classifer_augmented-0.97.hdf5"
+MODEL_CLF_WEIGHT = "resnet152_weights_tf.h5"
+MODEL_OBJ_NAME = "frozen_inference_graph.pb"
+
+MODEL_DIR = os.path.join(CWD, MODEL_DIR_NAME)
+MODEL_CLF_PATH = os.path.join(MODEL_DIR, MODEL_CLF_NAME)
+MODEL_CLF_WEIGHT_PATH = os.path.join(MODEL_DIR, MODEL_CLF_WEIGHT)
+MODEL_OBJ_PATH = os.path.join(MODEL_DIR, MODEL_OBJ_NAME)
+
+if os.path.exists(MODEL_CLF_PATH) and os.path.exists(MODEL_CLF_WEIGHT_PATH) and os.path.exists(MODEL_OBJ_PATH):
+    MODEL_AVAILABLE = True
+else:
+    print(f"Not all required models are available!")
+    if not os.path.exists(MODEL_DIR):
+        os.mkdir(MODEL_DIR)
+        print(f"Created a folder `{MODEL_DIR_NAME}` in current working directory that will host the models.")
+    MODEL_AVAILABLE = False
+
+
+if not MODEL_AVAILABLE:
+    print("\n...Downloading models from GDrive (takes ~2 minutes)...\n")
+    MODEL_CLF_URL = "https://drive.google.com/uc?id=1mOpZ3PG6VyulfLlUnQJdiysMF3T7SLE4"
+    MODEL_CLF_WEIGHT_URL = "https://drive.google.com/uc?id=17nB4ZHpTSPkFiWd2-VINTB79Zx9z7Q_5"
+    MODEL_OBJ_URL = "https://drive.google.com/uc?id=1D14F3YOBCYotojq_kGbK9aFW9PMIUUln"
+    gdown.download(MODEL_CLF_URL, MODEL_CLF_PATH, quiet = False)
+    gdown.download(MODEL_CLF_WEIGHT_URL, MODEL_CLF_WEIGHT_PATH, quiet = False)
+    gdown.download(MODEL_OBJ_URL, MODEL_OBJ_PATH, quiet = False)
+    print(f"\n..Trained models successfully downloaded to `{MODEL_DIR_NAME}` folder...\n")
+
+
+
 ################################### Load models #######################
 
 # Classification model
-model = load_pretrained_model(model_weights_path = 'models/initial_classifer_augmented-0.97.hdf5')
+print("\n...Loading models, please wait...\n")
+model = load_pretrained_model(model_weights_path=MODEL_CLF_PATH)
+#model = load_pretrained_model(model_weights_path = 'models/initial_classifer_augmented-0.97.hdf5')
 model._make_predict_function()
 
 # Object detection model
-PATH_TO_FROZEN_GRAPH = "models/frozen_inference_graph.pb"
-
-#PATH_TO_FROZEN_GRAPH = "ssd_mobilenet_v1_fpn_shared_box_predictor_640x640_coco14_sync_2018_07_03/frozen_inference_graph.pb"
-detection_graph = build_localization_model(PATH_TO_FROZEN_GRAPH)
-
+#PATH_TO_FROZEN_GRAPH = "models/frozen_inference_graph.pb"
+#detection_graph = build_localization_model(PATH_TO_FROZEN_GRAPH)
+detection_graph = build_localization_model(MODEL_OBJ_PATH)
 ########################### Load variables ##########################################
 
 classnames = np.array(['AM General Hummer SUV 2000',
